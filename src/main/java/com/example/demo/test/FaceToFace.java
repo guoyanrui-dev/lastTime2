@@ -1,5 +1,7 @@
 package com.example.demo.test;
 
+import org.testng.annotations.Test;
+
 import java.util.Arrays;
 
 /**
@@ -58,7 +60,8 @@ public class FaceToFace {
         }
     }
 
-    public static void main(String[] args) {
+    @Test
+    public static void test() {
         int[] nums = {43, 54, 23, 6, 7, 8, 12, 3, 6577, 886};
 //        insertObject(nums);
 //        quikly(nums, 0, nums.length - 1);
