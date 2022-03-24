@@ -2,6 +2,7 @@ package com.example.demo.test;
 
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 /**
@@ -61,11 +62,14 @@ public class FaceToFace {
     }
 
     @Test
-    public static void test() {
+    public static void test() throws IOException {
         int[] nums = {43, 54, 23, 6, 7, 8, 12, 3, 6577, 886};
 //        insertObject(nums);
 //        quikly(nums, 0, nums.length - 1);
         sele(nums);
         System.out.println(Arrays.toString(nums));
+        RequestUtil requestUtil = new RequestUtil();
+        requestUtil.sendGet("http://baidu.com");
     }
+
 }

@@ -2,12 +2,14 @@ package com.example.demo.controller;
 
 import com.example.demo.bean.User;
 import com.example.demo.service.UserService;
+import com.example.demo.test.RequestUtil;
 import lombok.extern.log4j.Log4j;
 import org.apache.ibatis.logging.log4j.Log4jImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -20,10 +22,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value ="/getUser")
+    @RequestMapping(value = "/getUser")
     @ResponseBody
     public List<User> getStaging() {
         return userService.getAllUser();
+    }
+
+    @RequestMapping(value = "/test")
+    @ResponseBody
+    public void test() throws IOException {
+        new RequestUtil().sendGet("http://baidu.com");
     }
 
     @RequestMapping("/add")
@@ -70,12 +78,14 @@ public class UserController {
             return "更新失败";
         }
     }
-    @RequestMapping(value = "/main",method = RequestMethod.GET)
+
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String getmain() {
         return "index";
     }
+
     @ExceptionHandler(Exception.class)
-    public String exception(){
-       return "error";
+    public String exception() {
+        return "error";
     }
 }
